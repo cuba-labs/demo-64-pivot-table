@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://caption"
+        class="com.company.demo.web.screens.PivotTableDemo"
+        messagesPack="com.company.demo.web.screens"
+        xmlns:chart="http://schemas.haulmont.com/charts/charts.xsd">
+    <dsContext>
+        <collectionDatasource id="tipsDs"
+                              class="com.company.demo.entity.TipInfo"
+                              view="_local">
+            <query>
+                <![CDATA[select e from demo$TipInfo e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout>
+        <tabSheet height="100%"
+                  width="100%">
+            <tab id="normalTab"
+                 caption="Simple"
+                 margin="true, false, false, false">
+                <chart:pivotTable datasource="tipsDs"
+                                  height="100%"
+                                  width="100%">
+                    <chart:columns>
+                        <chart:column value="day"/>
+                        <chart:column value="time"/>
+                    </chart:columns>
+                    <chart:properties>
+                        <chart:property name="totalBill"/>
+                        <chart:property name="tip"/>
+                        <chart:property name="sex"/>
+                        <chart:property name="smoker"/>
+                        <chart:property name="day"/>
+                        <chart:property name="time"/>
+                        <chart:property name="size"/>
+                    </chart:properties>
+                    <chart:rows>
+                        <chart:row value="sex"/>
+                        <chart:row value="smoker"/>
+                    </chart:rows>
+                </chart:pivotTable>
+            </tab>
+            <tab id="explicitRendererAggregationTab"
+                 caption="Explicit Renderer and Aggregation"
+                 margin="true, false, false, false">
+                <chart:pivotTable datasource="tipsDs"
+                                  height="100%"
+                                  width="100%"
+                                  renderer="HEATMAP">
+                    <chart:aggregation mode="SUM_OVER_SUM">
+                        <chart:property name="tip"/>
+                        <chart:property name="totalBill"/>
+                    </chart:aggregation>
+                    <chart:columns>
+                        <chart:column value="day"/>
+                        <chart:column value="time"/>
+                    </chart:columns>
+                    <chart:properties>
+                        <chart:property name="totalBill"/>
+                        <chart:property name="tip"/>
+                        <chart:property name="sex"/>
+                        <chart:property name="smoker"/>
+                        <chart:property name="day"/>
+                        <chart:property name="time"/>
+                        <chart:property name="size"/>
+                    </chart:properties>
+                    <chart:rows>
+                        <chart:row value="sex"/>
+                        <chart:row value="smoker"/>
+                    </chart:rows>
+                </chart:pivotTable>
+            </tab>
+            <tab id="editableTab"
+                 caption="Editable"
+                 margin="true, false, false, false">
+                <chart:pivotTable datasource="tipsDs"
+                                  editable="true"
+                                  height="100%"
+                                  width="100%">
+                    <chart:renderers default="HEATMAP"/>
+                    <chart:aggregations default="SUM_OVER_SUM"/>
+                    <chart:aggregationProperties>
+                        <chart:property name="tip"/>
+                        <chart:property name="totalBill"/>
+                    </chart:aggregationProperties>
+                    <chart:columns>
+                        <chart:column value="day"/>
+                        <chart:column value="time"/>
+                    </chart:columns>
+                    <chart:properties>
+                        <chart:property name="totalBill"/>
+                        <chart:property name="tip"/>
+                        <chart:property name="sex"/>
+                        <chart:property name="smoker"/>
+                        <chart:property name="day"/>
+                        <chart:property name="time"/>
+                        <chart:property name="size"/>
+                    </chart:properties>
+                    <chart:rows>
+                        <chart:row value="sex"/>
+                        <chart:row value="smoker"/>
+                    </chart:rows>
+                </chart:pivotTable>
+            </tab>
+            <tab id="customRendererAggregationsSetTab"
+                 caption="Custom Renderers and Aggregations Set"
+                 margin="true, false, false, false">
+                <chart:pivotTable datasource="tipsDs"
+                                  editable="true"
+                                  height="100%"
+                                  width="100%">
+                    <chart:renderers default="HEATMAP">
+                        <chart:renderer type="TABLE"/>
+                        <chart:renderer type="HEATMAP"/>
+                        <chart:renderer type="LINE_CHART"/>
+                    </chart:renderers>
+                    <chart:aggregations default="SUM_OVER_SUM">
+                        <chart:aggregation mode="COUNT"/>
+                        <chart:aggregation mode="SUM_OVER_SUM"/>
+                    </chart:aggregations>
+                    <chart:aggregationProperties>
+                        <chart:property name="tip"/>
+                        <chart:property name="totalBill"/>
+                    </chart:aggregationProperties>
+                    <chart:columns>
+                        <chart:column value="day"/>
+                        <chart:column value="time"/>
+                    </chart:columns>
+                    <chart:properties>
+                        <chart:property name="totalBill"/>
+                        <chart:property name="tip"/>
+                        <chart:property name="sex"/>
+                        <chart:property name="smoker"/>
+                        <chart:property name="day"/>
+                        <chart:property name="time"/>
+                        <chart:property name="size"/>
+                    </chart:properties>
+                    <chart:rows>
+                        <chart:row value="sex"/>
+                        <chart:row value="smoker"/>
+                    </chart:rows>
+                </chart:pivotTable>
+            </tab>
+            <tab id="sorterTab"
+                 caption="Sorter Function"
+                 margin="true, false, false, false">
+                <chart:pivotTable datasource="tipsDs"
+                                  height="100%"
+                                  width="100%">
+                    <chart:aggregation mode="SUM_OVER_SUM">
+                        <chart:property name="tip"/>
+                        <chart:property name="totalBill"/>
+                    </chart:aggregation>
+                    <chart:columns>
+                        <chart:column value="day"/>
+                        <chart:column value="time"/>
+                    </chart:columns>
+                    <chart:properties>
+                        <chart:property name="totalBill"/>
+                        <chart:property name="tip"/>
+                        <chart:property name="sex"/>
+                        <chart:property name="smoker"/>
+                        <chart:property name="day"/>
+                        <chart:property name="time"/>
+                        <chart:property name="size"/>
+                    </chart:properties>
+                    <chart:rows>
+                        <chart:row value="sex"/>
+                        <chart:row value="smoker"/>
+                    </chart:rows>
+                    <chart:sortersFunction>
+                        function(attr){
+                            if(attr=="Day") {
+                                return $.pivotUtilities.sortAs(["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]);
+                            }
+                        }
+                    </chart:sortersFunction>
+                </chart:pivotTable>
+            </tab>
+        </tabSheet>
+    </layout>
+</window>
